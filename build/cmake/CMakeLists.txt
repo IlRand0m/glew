@@ -169,13 +169,13 @@ else ()
   list(APPEND targets_to_install glew_s)
 endif()
 
-install ( TARGETS ${targets_to_install}
-          EXPORT glew-targets
-          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
-          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Runtime
-          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development
-          FRAMEWORK DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT Runtime
-)
+#install ( TARGETS ${targets_to_install}
+#          EXPORT glew-targets
+#          RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT Runtime
+#          LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Runtime
+#          ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR} COMPONENT Development
+#          FRAMEWORK DESTINATION ${CMAKE_INSTALL_PREFIX} COMPONENT Runtime
+#)
 
 if (BUILD_UTILS)
   set (GLEWINFO_SRC_FILES ${GLEW_DIR}/src/glewinfo.c)
@@ -227,10 +227,10 @@ endif ()
 
 configure_file (${GLEW_DIR}/glew.pc.in ${CMAKE_CURRENT_BINARY_DIR}/glew.pc @ONLY)
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glew.pc
-        DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
-        COMPONENT Development
-)
+#install(FILES ${CMAKE_CURRENT_BINARY_DIR}/glew.pc
+#        DESTINATION ${CMAKE_INSTALL_LIBDIR}/pkgconfig
+#        COMPONENT Development
+#)
 
 if(WIN32 AND MSVC AND (NOT MSVC_VERSION LESS 1600))
     install(
@@ -241,19 +241,19 @@ if(WIN32 AND MSVC AND (NOT MSVC_VERSION LESS 1600))
     )
 endif()
 
-install (
-    FILES ${GLEW_PUBLIC_HEADERS_FILES}
-    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/GL
-    COMPONENT Development)
+#install (
+#    FILES ${GLEW_PUBLIC_HEADERS_FILES}
+#    DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/GL
+#    COMPONENT Development)
 
-install(EXPORT glew-targets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew
-  COMPONENT Development
-  NAMESPACE GLEW::)
-install(FILES
-    ${CMAKE_CURRENT_SOURCE_DIR}/glew-config.cmake
-    ${CMAKE_CURRENT_SOURCE_DIR}/CopyImportedTargetProperties.cmake
-  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew
-  COMPONENT Development)
+#install(EXPORT glew-targets DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew
+#  COMPONENT Development
+#  NAMESPACE GLEW::)
+#install(FILES
+#    ${CMAKE_CURRENT_SOURCE_DIR}/glew-config.cmake
+#    ${CMAKE_CURRENT_SOURCE_DIR}/CopyImportedTargetProperties.cmake
+#  DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/glew
+#  COMPONENT Development)
 
 if(NOT TARGET uninstall)
   configure_file(
